@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo Installation Beginning. This make talke up to 15 minutes.
+
 sudo apt-get install git checkinstall &&  #install git
 
 #install development tools
@@ -81,12 +83,12 @@ nginx -s reload
 
 
 # Update PHP to PHPNG
-wget http://repos.zend.com/zend.key -O- 2> /dev/null | apt-key add -
-echo "deb http://repos.zend.com/zend-server/early-access/php7/repos ubuntu/" >> /etc/apt/sources.list
-apt-get update && apt-get install php7-nightly
+#wget http://repos.zend.com/zend.key -O- 2> /dev/null | apt-key add -
+#echo "deb http://repos.zend.com/zend-server/early-access/php7/repos ubuntu/" >> /etc/apt/sources.list
+#apt-get update && apt-get install php7-nightly
 
 # Download and Install Nginx upstart script
-sudo wget https://raw.githubusercontent.com/javik223/Tools/master/nginx -O /etc/init.d/nginx && 
+sudo wget https://raw.githubusercontent.com/javik223/Tools/master/nginx.sh -O /etc/init.d/nginx && 
 sudo chmod +x /etc/init.d/nginx &&
 
 # Remove Apache
