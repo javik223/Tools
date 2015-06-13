@@ -60,4 +60,37 @@ cd nginx-${NGINX_VERSION}/
 make && 
 
 # Make install
-make install
+make install && 
+
+# Install MySQL
+sudo apt-get install mysql-server &&
+sudo mysql_install_db &&
+sudo mysql_secure_installation
+
+# Install PHP & PHP Developmental tools
+sudo apt-get install php5-fpm php5-mcrypt php5-gd php5-json php5-curl && 
+
+# Stop Apache
+sudo service apache2 stop &&
+
+# Link Nginx to SBIN
+cd /usr/sbin &&
+ln -s /usr/local/nginx/sbin/nginx &&
+
+nginx -s reload
+
+
+# Update PHP to PHPNG
+wget http://repos.zend.com/zend.key -O- 2> /dev/null | apt-key add -
+echo "deb http://repos.zend.com/zend-server/early-access/php7/repos ubuntu/" >> /etc/apt/sources.list
+apt-get update && apt-get install php7-nightly
+
+# Download and Install Nginx upstart script
+sudo wget https://raw.githubusercontent.com/javik223/Tools/master/nginx -O /etc/init.d/nginx && 
+sudo chmod +x /etc/init.d/nginx &&
+
+# Remove Apache
+sudo apt-get remove apache2 &&
+
+#Install Varnish
+sudo apt-get install varnish
