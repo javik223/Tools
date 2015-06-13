@@ -2,6 +2,8 @@
 
 echo Installation Beginning. This make talke up to 15 minutes.
 
+sudo apt-get update && 
+
 sudo apt-get install git checkinstall &&  #install git
 
 #install development tools
